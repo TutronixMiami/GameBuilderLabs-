@@ -5,13 +5,18 @@ const canvas = document.querySelector("#portal-canvas");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function enterSite() {
-  entrance.classList.add("is-opening");
-  document.body.classList.remove("entrance-active");
-  siteShell.setAttribute("aria-hidden", "false");
+  entryButton.disabled = true;
+  entrance.classList.add("is-warping");
+  const revealDelay = reduceMotion ? 0 : 900;
+  window.setTimeout(() => {
+    entrance.classList.add("is-opening");
+    document.body.classList.remove("entrance-active");
+    siteShell.setAttribute("aria-hidden", "false");
+  }, revealDelay);
   window.setTimeout(() => {
     entrance.hidden = true;
     document.querySelector(".site-header .brand")?.focus({ preventScroll: true });
-  }, reduceMotion ? 0 : 1000);
+  }, reduceMotion ? 0 : 1450);
 }
 
 entryButton.addEventListener("click", enterSite);
