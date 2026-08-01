@@ -3,18 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>GameBuilder Labs</title>
-  <meta
-    name="description"
-    content="GameBuilder Labs teaches young creators coding fundamentals and game design through Roblox Studio."
-  >
+  <meta name="description" content="GameBuilder Labs helps young creators learn coding and game design by building worlds of their own.">
+  <meta name="theme-color" content="#111b5e">
+  <title>GameBuilder Labs — Build a world of your own</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <main>
-    <h1>GameBuilder Labs</h1>
-    <p>Website coming soon.</p>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="GameBuilder Labs home">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>GameBuilder Labs</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#journey">The journey</a>
+      <a href="#studio">The studio</a>
+      <a href="#families">For families</a>
+    </nav>
+    <a class="button button-light" href="#families">Join the next lab <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="assets/creator-universe-hero.png" alt="A young creator using a laptop beside a glowing portal to a game world at twilight">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> A creative coding studio for young builders</p>
+        <h1 id="hero-title">Build a world<br>of your own.</h1>
+        <p class="hero-copy">Learn the code, design, and creative confidence to turn an idea into a game people can play.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#journey">Enter the lab <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#journey">Explore the journey <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <p class="hero-note">Miami · Online<br>Ages 9–16</p>
+      <a class="scroll-cue" href="#journey" aria-label="Scroll to the learning journey">Scroll to explore <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="intro section" id="journey">
+      <p class="section-label">01 — The creator journey</p>
+      <div class="intro-grid">
+        <h2>Every great game begins with a small idea.</h2>
+        <div>
+          <p class="lead">We give young creators the tools and guidance to follow that idea all the way into a world they can share.</p>
+          <p>GameBuilder Labs is hands-on by design. Students learn fundamentals through real creative decisions: how a character moves, why a level feels fun, and what makes a system work.</p>
+        </div>
+      </div>
+
+      <div class="path" aria-label="Three stages of the GameBuilder Labs journey">
+        <article class="path-card path-card-one">
+          <div class="path-number">01</div>
+          <div class="path-symbol symbol-spark" aria-hidden="true">✦</div>
+          <div>
+            <p class="card-kicker">Imagine</p>
+            <h3>Find the idea.</h3>
+            <p>Start with curiosity. Shape a character, challenge, or world worth exploring.</p>
+          </div>
+        </article>
+        <article class="path-card path-card-two">
+          <div class="path-number">02</div>
+          <div class="path-symbol symbol-code" aria-hidden="true">&lt;/&gt;</div>
+          <div>
+            <p class="card-kicker">Build</p>
+            <h3>Make it work.</h3>
+            <p>Turn creative choices into systems through code, iteration, and play.</p>
+          </div>
+        </article>
+        <article class="path-card path-card-three">
+          <div class="path-number">03</div>
+          <div class="path-symbol symbol-portal" aria-hidden="true"></div>
+          <div>
+            <p class="card-kicker">Launch</p>
+            <h3>Open the portal.</h3>
+            <p>Polish the experience, invite players in, and share what you created.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="studio section" id="studio">
+      <div class="studio-copy">
+        <p class="section-label section-label-light">02 — Inside the studio</p>
+        <h2>A lab for playful, serious creation.</h2>
+        <p>Students work in small groups with mentors who know when to teach, when to challenge, and when to let discovery happen.</p>
+        <a class="button button-light" href="#families">Meet the lab <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="studio-console" aria-label="Example creator project card">
+        <div class="console-top"><span>Creator log</span><span>Project 01</span></div>
+        <div class="console-world">
+          <div class="moon"></div>
+          <div class="island island-back"></div>
+          <div class="island island-front"><span class="tree"></span></div>
+        </div>
+        <div class="console-bottom">
+          <span>World status</span>
+          <strong><i></i> In development</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="families section" id="families">
+      <p class="section-label">03 — Made for growing minds</p>
+      <div class="families-grid">
+        <h2>More than screen time.<br><em>Creative time.</em></h2>
+        <div class="family-points">
+          <article><span>01</span><div><h3>Real skills</h3><p>Logic, systems thinking, design, communication, and the confidence to solve unfamiliar problems.</p></div></article>
+          <article><span>02</span><div><h3>Real projects</h3><p>Every concept is learned in context and applied to a game the student genuinely cares about.</p></div></article>
+          <article><span>03</span><div><h3>Real ownership</h3><p>Students leave with something that belongs to them—and a clearer sense of what they can make next.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="closing-orbit" aria-hidden="true"><span></span></div>
+      <p class="section-label section-label-light">The next world is waiting</p>
+      <h2>What will<br>they build?</h2>
+      <a class="button button-primary" href="#top">Return to the beginning <span aria-hidden="true">↑</span></a>
+    </section>
   </main>
+
+  <footer>
+    <a class="brand brand-dark" href="#top"><span class="brand-mark" aria-hidden="true"><span></span></span><span>GameBuilder Labs</span></a>
+    <p>Young minds. Bold worlds.</p>
+    <p>© 2026 GameBuilder Labs</p>
+  </footer>
 </body>
 </html>
