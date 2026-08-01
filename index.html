@@ -11,7 +11,20 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="entrance-active">
+  <section class="entrance" id="entrance" aria-label="Enter GameBuilder Labs">
+    <img class="entrance-image" src="assets/creator-universe-hero.png" alt="A young creator sitting beside a portal to a game world">
+    <div class="entrance-vignette"></div>
+    <canvas class="portal-canvas" id="portal-canvas" aria-hidden="true"></canvas>
+    <button class="portal-entry" id="portal-entry" type="button" aria-label="Enter the GameBuilder Labs website">
+      <span class="portal-entry-ring" aria-hidden="true"></span>
+      <span class="portal-entry-label">Enter the portal <b>↗</b></span>
+    </button>
+    <div class="entrance-brand"><span class="brand-mark" aria-hidden="true"><span></span></span><span>GameBuilder Labs</span></div>
+    <p class="entrance-hint">A universe of ideas is waiting.</p>
+  </section>
+
+  <div class="site-shell" id="site-shell" aria-hidden="true">
   <header class="site-header">
     <a class="brand" href="#top" aria-label="GameBuilder Labs home">
       <span class="brand-mark" aria-hidden="true"><span></span></span>
@@ -129,5 +142,7 @@
     <p>Young minds. Bold worlds.</p>
     <p>© 2026 GameBuilder Labs</p>
   </footer>
+  </div>
+  <script defer src="script.js"></script>
 </body>
 </html>
