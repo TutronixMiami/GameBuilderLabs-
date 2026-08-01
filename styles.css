@@ -182,9 +182,13 @@ footer p { margin: 0; }
 
 /* Creative coding studio art direction */
 .hero-cta { background: radial-gradient(circle at 78% 38%, rgba(44,114,255,.26), transparent 26%), linear-gradient(145deg, #070c1c, #101a36 56%, #111b2e); }
-.hero-cta .hero-content { width: min(690px, 58vw); }
-.hero-cta h1 { max-width: 690px; font-size: clamp(54px, 6.2vw, 88px); }
+.hero-cta .hero-content { width: min(690px, 58vw); padding-top: 118px; padding-bottom: 64px; }
+.hero-cta h1 { max-width: 690px; margin-bottom: 20px; font-size: clamp(52px, 5.5vw, 76px); }
 .hero-cta h1 em { color: #51a5ff; }
+.hero-cta .hero-copy { font-size: clamp(15px, 1.15vw, 17px); line-height: 1.5; }
+.hero-cta .outcome-list { margin-top: 17px; }
+.hero-cta .hero-closing { margin-top: 20px; font-size: clamp(18px, 1.6vw, 23px); }
+.hero-cta .hero-actions { margin-top: 13px; }
 .hero-game-grid { opacity: .26; background-size: 38px 38px; background-image: linear-gradient(rgba(75,139,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(75,139,255,.16) 1px, transparent 1px); }
 .outcome-list li { border-color: rgba(75,139,255,.3); background: rgba(28,81,168,.16); color: #cbdcff; font-family: Consolas, "Courier New", monospace; }
 .studio-ui { position: absolute; z-index: 2; top: 18%; right: 3.8%; width: min(430px, 35vw); overflow: hidden; border: 1px solid rgba(121,160,222,.38); border-radius: 9px; background: rgba(8,14,29,.92); box-shadow: 0 35px 100px rgba(0,0,0,.48), 0 0 60px rgba(48,110,255,.12); font-family: Consolas, "Courier New", monospace; transform: perspective(1100px) rotateY(-5deg) rotateX(2deg); backdrop-filter: blur(18px); }
