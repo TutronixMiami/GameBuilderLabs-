@@ -4,6 +4,11 @@ const skipIntroButton = document.querySelector("#skip-intro");
 const replayIntroButton = document.querySelector("#replay-intro");
 const siteShell = document.querySelector("#site-shell");
 const canvas = document.querySelector("#portal-canvas");
+const siteHeader = document.querySelector(".site-header");
+const hero = document.querySelector(".hero-cta");
+const progressFill = document.querySelector("#page-progress-fill");
+const progressLabel = document.querySelector(".page-progress-label");
+const studioConsole = document.querySelector(".studio-console");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const visitKey = "gamebuilderlabs-portal-entered";
@@ -20,6 +25,7 @@ function revealSiteImmediately() {
   entrance.hidden = true;
   document.body.classList.remove("entrance-active");
   siteShell.setAttribute("aria-hidden", "false");
+  siteShell.classList.add("is-live");
 }
 
 function enterSite({ animate = true } = {}) {
@@ -35,6 +41,7 @@ function enterSite({ animate = true } = {}) {
     entrance.classList.add("is-opening");
     document.body.classList.remove("entrance-active");
     siteShell.setAttribute("aria-hidden", "false");
+    siteShell.classList.add("is-live");
   }, 900);
   window.setTimeout(() => {
     entrance.hidden = true;
@@ -49,6 +56,7 @@ function replayIntro() {
   entryButton.disabled = false;
   document.body.classList.add("entrance-active");
   siteShell.setAttribute("aria-hidden", "true");
+  siteShell.classList.remove("is-live");
   window.setTimeout(() => entryButton.focus(), reduceMotion ? 0 : 350);
 }
 
@@ -57,6 +65,51 @@ skipIntroButton.addEventListener("click", () => enterSite({ animate: false }));
 replayIntroButton.addEventListener("click", replayIntro);
 
 if (hasVisited()) revealSiteImmediately();
+
+const revealTargets = document.querySelectorAll(".section-label, .intro-grid > *, .path-card, .studio-copy > *, .studio-console, .families-grid > *, .family-points article, .closing > *:not(.closing-orbit)");
+if (!reduceMotion && "IntersectionObserver" in window) {
+  revealTargets.forEach((target) => target.classList.add("reveal-target"));
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.13 });
+  revealTargets.forEach((target) => revealObserver.observe(target));
+}
+
+function updatePageMotion() {
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = maxScroll > 0 ? Math.min(1, window.scrollY / maxScroll) : 0;
+  progressFill.style.transform = `scaleY(${progress})`;
+  const stage = Math.min(4, Math.floor(progress * 4) + 1);
+  progressLabel.textContent = `${String(stage).padStart(2, "0")} / 04`;
+  siteHeader.classList.toggle("is-scrolled", window.scrollY > 70);
+}
+
+window.addEventListener("scroll", updatePageMotion, { passive: true });
+updatePageMotion();
+
+if (!reduceMotion) {
+  hero.addEventListener("pointermove", (event) => {
+    const bounds = hero.getBoundingClientRect();
+    hero.style.setProperty("--spot-x", `${event.clientX - bounds.left}px`);
+    hero.style.setProperty("--spot-y", `${event.clientY - bounds.top}px`);
+  });
+  studioConsole.addEventListener("pointermove", (event) => {
+    const bounds = studioConsole.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    studioConsole.style.setProperty("--tilt-x", `${-y * 7}deg`);
+    studioConsole.style.setProperty("--tilt-y", `${x * 7}deg`);
+  });
+  studioConsole.addEventListener("pointerleave", () => {
+    studioConsole.style.setProperty("--tilt-x", "0deg");
+    studioConsole.style.setProperty("--tilt-y", "0deg");
+  });
+}
 
 async function createPortalEffect() {
   try {
