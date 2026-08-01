@@ -1,25 +1,62 @@
 const entrance = document.querySelector("#entrance");
 const entryButton = document.querySelector("#portal-entry");
+const skipIntroButton = document.querySelector("#skip-intro");
+const replayIntroButton = document.querySelector("#replay-intro");
 const siteShell = document.querySelector("#site-shell");
 const canvas = document.querySelector("#portal-canvas");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function enterSite() {
+const visitKey = "gamebuilderlabs-portal-entered";
+
+function rememberVisit() {
+  try { window.localStorage.setItem(visitKey, "true"); } catch (error) { /* Storage is optional. */ }
+}
+
+function hasVisited() {
+  try { return window.localStorage.getItem(visitKey) === "true"; } catch (error) { return false; }
+}
+
+function revealSiteImmediately() {
+  entrance.hidden = true;
+  document.body.classList.remove("entrance-active");
+  siteShell.setAttribute("aria-hidden", "false");
+}
+
+function enterSite({ animate = true } = {}) {
+  rememberVisit();
+  if (!animate || reduceMotion) {
+    revealSiteImmediately();
+    document.querySelector(".site-header .brand")?.focus({ preventScroll: true });
+    return;
+  }
   entryButton.disabled = true;
   entrance.classList.add("is-warping");
-  const revealDelay = reduceMotion ? 0 : 900;
   window.setTimeout(() => {
     entrance.classList.add("is-opening");
     document.body.classList.remove("entrance-active");
     siteShell.setAttribute("aria-hidden", "false");
-  }, revealDelay);
+  }, 900);
   window.setTimeout(() => {
     entrance.hidden = true;
     document.querySelector(".site-header .brand")?.focus({ preventScroll: true });
-  }, reduceMotion ? 0 : 1450);
+  }, 1450);
 }
 
-entryButton.addEventListener("click", enterSite);
+function replayIntro() {
+  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  entrance.hidden = false;
+  entrance.classList.remove("is-warping", "is-opening");
+  entryButton.disabled = false;
+  document.body.classList.add("entrance-active");
+  siteShell.setAttribute("aria-hidden", "true");
+  window.setTimeout(() => entryButton.focus(), reduceMotion ? 0 : 350);
+}
+
+entryButton.addEventListener("click", () => enterSite());
+skipIntroButton.addEventListener("click", () => enterSite({ animate: false }));
+replayIntroButton.addEventListener("click", replayIntro);
+
+if (hasVisited()) revealSiteImmediately();
 
 async function createPortalEffect() {
   try {
@@ -84,6 +121,14 @@ async function createPortalEffect() {
     }));
     portal.add(particles);
 
+    const pointerTarget = { x: 0, y: 0 };
+    entryButton.addEventListener("pointermove", (event) => {
+      const bounds = entryButton.getBoundingClientRect();
+      pointerTarget.x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 0.16;
+      pointerTarget.y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 0.16;
+    });
+    entryButton.addEventListener("pointerleave", () => { pointerTarget.x = 0; pointerTarget.y = 0; });
+
     function resize() {
       renderer.setSize(window.innerWidth, window.innerHeight, false);
       const mobile = window.innerWidth <= 800;
@@ -98,6 +143,8 @@ async function createPortalEffect() {
       const time = clock.getElapsedTime();
       glowMaterial.uniforms.uTime.value = time;
       if (!reduceMotion) particles.rotation.z = time * 0.035;
+      portal.rotation.y += (pointerTarget.x - portal.rotation.y) * 0.045;
+      portal.rotation.x += (-pointerTarget.y - portal.rotation.x) * 0.045;
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     }

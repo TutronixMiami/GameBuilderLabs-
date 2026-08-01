@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=portal-20260731-3">
+  <link rel="stylesheet" href="styles.css?v=portal-20260731-4">
 </head>
 <body class="entrance-active">
   <section class="entrance" id="entrance" aria-label="Enter GameBuilder Labs">
@@ -22,6 +22,7 @@
     </button>
     <div class="entrance-brand"><span class="brand-mark" aria-hidden="true"><span></span></span><span>GameBuilder Labs</span></div>
     <p class="entrance-hint">A universe of ideas is waiting.</p>
+    <button class="skip-intro" id="skip-intro" type="button">Skip intro <span aria-hidden="true">→</span></button>
   </section>
 
   <div class="site-shell" id="site-shell" aria-hidden="true">
@@ -35,7 +36,7 @@
       <a href="#studio">The studio</a>
       <a href="#families">For families</a>
     </nav>
-    <a class="button button-light" href="#families">Join the next lab <span aria-hidden="true">↗</span></a>
+    <a class="button button-light" href="#journey">Explore the program <span aria-hidden="true">↓</span></a>
   </header>
 
   <main id="top">
@@ -47,6 +48,9 @@
         <p class="eyebrow"><span></span> Does your child love Roblox?</p>
         <h1 id="hero-title">Turn screen time<br>into <em>building time.</em></h1>
         <p class="hero-copy">GameBuilder Labs transforms a passion for gaming into an opportunity to learn coding, game design, problem solving, and creative thinking. Students move beyond simply playing Roblox and begin building interactive worlds, designing game systems, and bringing their own ideas to life.</p>
+        <ul class="outcome-list" aria-label="Skills students develop">
+          <li>Coding</li><li>Game design</li><li>Problem solving</li><li>Creative thinking</li>
+        </ul>
         <p class="hero-closing">Give their passion for gaming a purpose.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#journey">Discover GameBuilder Labs <span aria-hidden="true">↓</span></a>
@@ -72,8 +76,8 @@
           <div class="path-symbol symbol-spark" aria-hidden="true">✦</div>
           <div>
             <p class="card-kicker">Imagine</p>
-            <h3>Find the idea.</h3>
-            <p>Start with curiosity. Shape a character, challenge, or world worth exploring.</p>
+            <h3>Shape a game idea.</h3>
+            <p>Turn curiosity into a character, challenge, and world with a clear creative direction.</p>
           </div>
         </article>
         <article class="path-card path-card-two">
@@ -81,8 +85,8 @@
           <div class="path-symbol symbol-code" aria-hidden="true">&lt;/&gt;</div>
           <div>
             <p class="card-kicker">Build</p>
-            <h3>Make it work.</h3>
-            <p>Turn creative choices into systems through code, iteration, and play.</p>
+            <h3>Code a working mechanic.</h3>
+            <p>Build movement, rules, and systems—then test, improve, and make them fun.</p>
           </div>
         </article>
         <article class="path-card path-card-three">
@@ -90,8 +94,8 @@
           <div class="path-symbol symbol-portal" aria-hidden="true"></div>
           <div>
             <p class="card-kicker">Launch</p>
-            <h3>Open the portal.</h3>
-            <p>Polish the experience, invite players in, and share what you created.</p>
+            <h3>Share a playable world.</h3>
+            <p>Polish the experience, invite players in, and present a creation that works.</p>
           </div>
         </article>
       </div>
@@ -134,16 +138,17 @@
       <div class="closing-orbit" aria-hidden="true"><span></span></div>
       <p class="section-label section-label-light">The next world is waiting</p>
       <h2>What will<br>they build?</h2>
-      <a class="button button-primary" href="#top">Return to the beginning <span aria-hidden="true">↑</span></a>
+      <a class="button button-primary" href="#journey">Explore what they’ll learn <span aria-hidden="true">↑</span></a>
     </section>
   </main>
 
   <footer>
     <a class="brand brand-dark" href="#top"><span class="brand-mark" aria-hidden="true"><span></span></span><span>GameBuilder Labs</span></a>
     <p>Young minds. Bold worlds.</p>
+    <button class="replay-intro" id="replay-intro" type="button">Replay portal</button>
     <p>© 2026 GameBuilder Labs</p>
   </footer>
   </div>
-  <script defer src="script.js?v=portal-20260731-3"></script>
+  <script defer src="script.js?v=portal-20260731-4"></script>
 </body>
 </html>
