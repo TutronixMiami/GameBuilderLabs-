@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=portal-20260731-5">
+  <link rel="stylesheet" href="styles.css?v=portal-20260731-6">
 </head>
 <body class="entrance-active">
   <section class="entrance" id="entrance" aria-label="Enter GameBuilder Labs">
@@ -43,8 +43,6 @@
   <main id="top">
     <section class="hero hero-cta" aria-labelledby="hero-title">
       <div class="hero-game-grid" aria-hidden="true"></div>
-      <div class="hero-orbit" aria-hidden="true"><span></span><i></i></div>
-      <div class="hero-blocks" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="hero-content">
         <p class="eyebrow"><span></span> Does your child love Roblox?</p>
         <h1 id="hero-title">Turn screen time<br>into <em>building time.</em></h1>
@@ -56,6 +54,30 @@
         <div class="hero-actions">
           <a class="button button-primary" href="#journey">Discover GameBuilder Labs <span aria-hidden="true">↓</span></a>
         </div>
+      </div>
+      <div class="studio-ui" aria-hidden="true">
+        <div class="studio-ui-bar"><span><i></i><i></i><i></i></span><b>WORLD_01.rbxl</b><em>▶ PLAY</em></div>
+        <div class="studio-ui-workspace">
+          <div class="code-panel">
+            <div class="code-tab"><span>◇</span> PortalController.lua <i>×</i></div>
+            <pre><code><span class="ln">01</span><span class="kw">local</span> Players = game:<span class="fn">GetService</span>(<span class="str">"Players"</span>)
+<span class="ln">02</span><span class="kw">local</span> portal = workspace.Portal
+<span class="ln">03</span>
+<span class="ln">04</span>portal.Touched:<span class="fn">Connect</span>(<span class="kw">function</span>(part)
+<span class="ln">05</span>  <span class="kw">local</span> player = Players:<span class="fn">GetPlayerFromCharacter</span>(part.Parent)
+<span class="ln">06</span>  <span class="kw">if</span> player <span class="kw">then</span>
+<span class="ln">07</span>    <span class="fn">unlockWorld</span>(player)
+<span class="ln">08</span>  <span class="kw">end</span>
+<span class="ln">09</span><span class="kw">end</span>)</code></pre>
+          </div>
+          <div class="explorer-panel">
+            <div class="panel-title">EXPLORER <span>⋯</span></div>
+            <ul><li>⌄ ◫ Workspace</li><li class="tree-child active">◇ Portal</li><li class="tree-child">▦ SpawnLocation</li><li>› ◉ Players</li><li>› ◇ Lighting</li><li>› ◫ ReplicatedStorage</li></ul>
+            <div class="panel-title properties">PROPERTIES <span>＋</span></div>
+            <dl><dt>Name</dt><dd>Portal</dd><dt>Material</dt><dd>Neon</dd><dt>CanCollide</dt><dd>false</dd></dl>
+          </div>
+        </div>
+        <div class="studio-ui-status"><span><i></i> Connected</span><span>Lua · Line 7, Col 5</span></div>
       </div>
       <p class="hero-note">Miami · Online<br>Ages 9–16</p>
       <a class="scroll-cue" href="#journey" aria-label="Scroll to the learning journey">Scroll to explore <span aria-hidden="true">↓</span></a>
@@ -111,10 +133,22 @@
       </div>
       <div class="studio-console" aria-label="Example creator project card">
         <div class="console-top"><span>Creator log</span><span>Project 01</span></div>
-        <div class="console-world">
-          <div class="moon"></div>
-          <div class="island island-back"></div>
-          <div class="island island-front"><span class="tree"></span></div>
+        <div class="console-workspace">
+          <div class="viewport-scene" aria-hidden="true">
+            <span class="axis axis-x">X</span><span class="axis axis-y">Y</span><span class="axis axis-z">Z</span>
+            <div class="build-platform"><i></i><i></i><i></i><i></i></div>
+            <div class="spawn-block"></div>
+          </div>
+          <div class="console-code" aria-label="Example Lua game logic">
+            <div class="mini-tab">GameLoop.lua</div>
+            <pre><span class="comment">-- Build. Test. Improve.</span>
+<span class="kw">local</span> score = <span class="num">0</span>
+
+<span class="kw">function</span> <span class="fn">collectCoin</span>()
+  score += <span class="num">1</span>
+  <span class="fn">updateWorld</span>()
+<span class="kw">end</span></pre>
+          </div>
         </div>
         <div class="console-bottom">
           <span>World status</span>
@@ -150,6 +184,6 @@
     <p>© 2026 GameBuilder Labs</p>
   </footer>
   </div>
-  <script defer src="script.js?v=portal-20260731-5"></script>
+  <script defer src="script.js?v=portal-20260731-6"></script>
 </body>
 </html>
